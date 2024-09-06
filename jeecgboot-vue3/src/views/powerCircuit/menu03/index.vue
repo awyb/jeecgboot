@@ -26,7 +26,7 @@
   import LinePredict from './LinePredict.vue';
   import { PageWrapper } from '/@/components/Page';
   import { onMounted, ref, onBeforeMount } from 'vue';
-
+  import { defHttp } from '/@/utils/http/axios';
   const lineChart = ref(null);
   const state = ref(true);
 
@@ -34,54 +34,47 @@
   let i = 0;
   let checked = { title: '科五线', type: 'cable' };
   let timer;
-  const predictLoad = () => {
+  const predictLoad = async () => {
     if (!lineChart.value) return;
-    const list = [
-      { time: '00:00', value: 0, predict: 0 },
-      { time: '01:00', value: 0, predict: 0 },
-      { time: '02:00', value: 0, predict: 0 },
-      { time: '03:00', value: 0, predict: 0 },
-      { time: '04:00', value: 0, predict: 0 },
-      { time: '05:00', value: 0, predict: 0 },
-      { time: '06:00', value: 0, predict: 0 },
-      { time: '07:00', value: 0, predict: 0 },
-      { time: '08:00', value: 0, predict: 0 },
-      { time: '09:00', value: 0, predict: 0 },
-      { time: '10:00', value: 0, predict: 0 },
-      { time: '11:00', value: 0, predict: 0 },
-      { time: '12:00', value: 0, predict: 0 },
-      { time: '13:00', value: 0, predict: 0 },
-      { time: '14:00', value: 0, predict: 0 },
-      { time: '15:00', value: 0, predict: 0 },
-      { time: '16:00', value: 0, predict: 0 },
-      { time: '17:00', value: 0, predict: 0 },
-      { time: '18:00', value: 0, predict: 0 },
-      { time: '19:00', value: 0, predict: 0 },
-      { time: '20:00', value: 0, predict: 0 },
-      { time: '21:00', value: 0, predict: 0 },
-      { time: '22:00', value: 0, predict: 0 },
-      { time: '23:00', value: 0, predict: 0 },
-    ];
+    const actualLoad = await defHttp.get({
+      url: '/online/cgreport/api/getColumnsAndData/1831577650211512321',
+      params: { pageSize: 30 },
+    });
+    const predictLoad = await defHttp.get({
+      url: '/online/cgreport/api/getColumnsAndData/1831575913648021505',
+      params: { pageSize: 30 },
+    });
     (lineChart.value as any)?.initChart([], '预测负荷：' + checked.title);
     i = 0;
     inData.length = 0;
-    let timer = setInterval(() => {
-      if (i > 23 || !lineChart.value) return clearInterval(timer);
-      inData.push({
-        time: list[i].time,
-        value: Math.floor(Math.random() * 10 * (Math.random() * 2 - 1 > 0 ? 1 : -1)) + 50,
-        predict: Math.floor(Math.random() * 10 * (Math.random() * 2 - 1 > 0 ? 1 : -1)) + 50,
-      });
-      i++;
-      (lineChart.value as any)?.initChart(inData, '预测负荷：' + checked.title);
-      state.value = Boolean(i % 2);
-    }, 1000 * 1);
+    // let timer = setInterval(() => {
+    //   if (i > 23 || !lineChart.value) return clearInterval(timer);
+    //   inData.push({
+    //     time: list[i].time,
+    //     value: Math.floor(Math.random() * 10 * (Math.random() * 2 - 1 > 0 ? 1 : -1)) + 50,
+    //     predict: Math.floor(Math.random() * 10 * (Math.random() * 2 - 1 > 0 ? 1 : -1)) + 50,
+    //   });
+    //   i++;
+    //   (lineChart.value as any)?.initChart(inData, '预测负荷：' + checked.title);
+    //   state.value = Boolean(i % 2);
+    // }, 1000 * 1);
+    predictLoad.data.records.forEach((obj: any) => {
+      inData.push({ time: obj.create_time, predict: obj.load_value });
+    });
+
+    actualLoad.data.records.forEach((obj: any) => {
+      const f = inData.find((item) => item.time === obj.create_time);
+      if (f) f.actual = obj.load_value;
+      else inData.push({ time: obj.create_time, actual: obj.load_value });
+    });
+    inData.sort((a, b) => a.time - b.time);
+    (lineChart.value as any)?.initChart(inData, '预测负荷：' + checked.title);
   };
   onMounted(() => {
     predictLoad();
   });
   onBeforeMount(() => {
-    clearInterval(timer);
+    // clearInterval(timer);
   });
   const refresh = () => {
     predictLoad();

@@ -34,7 +34,7 @@
       const unit = 'MW';
       const chartRef = ref<HTMLDivElement | null>(null);
       let chartInstance: echarts.ECharts;
-      function initOption({ hData, pData }) {
+      function initOption({ hData, pData, list }) {
         const option = {
           title: {
             // text: '短期负荷预测曲线',
@@ -47,12 +47,19 @@
             },
             formatter: function (params: any) {
               const a = params[0];
-              const b = params[1];
-              return `<div style="display:flex;flex-direction:column;align-items:start;">
-              <label><span style='font-weight:600;'>计算时间</span>：${a.name}</label>
+              const h = `<div style="display:flex;flex-direction:column;align-items:start;">
+              <label><span style='font-weight:600;'>计算时间</span>：${a.name}</label>`;
+              if (params.length === 2) {
+                const b = params[1];
+                return `${h}
               <label><span style='font-weight:600;'>${a.seriesName}</span>：${a.value[1]} ${unit}</label>
               <label><span style='font-weight:600;'>${b.seriesName}</span>：${b.value[1]} ${unit}</label>
               </div>`;
+              } else {
+                return `${h}
+              <label><span style='font-weight:600;'>${a.seriesName}</span>：${a.value[1]} ${unit}</label>
+              </div>`;
+              }
             },
           },
           legend: {
@@ -66,28 +73,36 @@
               dataZoom: {
                 yAxisIndex: 'none',
               },
-              dataView: { readOnly: false, show: true },
+              // dataView: { readOnly: false, show: true },
               magicType: { type: ['line', 'bar'] },
               restore: {},
               saveAsImage: {},
             },
           },
           xAxis: {
-            name: '时间',
+            name: '时间（月-日 时:分）',
             nameLocation: 'center',
-            nameGap: 100,
+            nameGap: 50,
             type: 'category',
             boundaryGap: false,
             axisLine: { show: true, lineStyle: { color: '#000' } },
-            data: [...new Set(hData.map((i) => i[0]))].sort(),
+            data: [...new Set(list.map((i) => i.time))],
+            axisLabel: {
+              fontSize: 10,
+              formatter: function (params: any) {
+                const d = params.split(' ')[0];
+                const t = params.split(' ')[1];
+                return d.split('-').slice(1).join('-') + ' ' + t.split(':').slice(0, 2).join(':');
+              },
+            },
           },
           yAxis: {
             name: `负荷（${unit}）`,
             nameLocation: 'center',
             nameGap: 100,
             min: 0,
-            // max: Math.max(...[...pData, ...hData].map((i) => i[1])),
-            max: 100,
+            max: Math.floor(Math.max(...[...pData, ...hData].map((i) => i[1]))) + 1,
+            // max: 100,
             axisLabel: {
               formatter: '{value}',
             },
@@ -158,12 +173,12 @@
         return option;
       }
 
-      function initChart(list: { time: string; value: number; predict: number }[]) {
-        const hData = list.map((l) => [l.time, l.value]);
-        const pData = list.map((l) => [l.time, l.predict]);
+      function initChart(list: { time: string; actual?: number; predict?: number }[]) {
+        const hData = list.filter((i) => i.actual).map((l) => [l.time, l.actual]);
+        const pData = list.filter((i) => i.predict).map((l) => [l.time, l.predict]);
 
         if (!chartInstance) return;
-        chartInstance.setOption(initOption({ hData, pData }), true);
+        chartInstance.setOption(initOption({ hData, pData, list }), true);
       }
       onMounted(() => {
         chartInstance = echarts.init(chartRef.value);

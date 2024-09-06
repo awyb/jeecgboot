@@ -25,7 +25,7 @@
         />
         <div style="margin: 10px; display: flex; justify-content: space-evenly">
           <a-button type="primary" size="small" preIcon="ant-design:edit-outlined" :disabled="!isUse" @click="openModal(true, {})">矫正计算</a-button>
-          <a-button type="primary" size="small" preIcon="ant-design:calculator-outlined" @click="calculation">潮流计算</a-button>
+          <a-button type="primary" size="small" preIcon="ant-design:calculator-outlined" @click="calculation">显示潮流</a-button>
         </div>
       </div>
       <div style="height: 100%; width: 78%; border: 2px solid; text-align: center; overflow: hidden">
@@ -316,8 +316,9 @@
       function toolbarCall() {
         onCheck((tree.value as any).getCheckedKeys());
       }
+
       // 潮流文字添加
-      function appendText(id: string, vals: Array<string>) {
+      async function appendText(id: string, vals: Array<string>) {
         if (!vals.length) return;
         const source = document.getElementById(id);
         const createTspan = (val) => {
@@ -365,7 +366,7 @@
         appendText('svg_209', [Math.floor(Math.random() * 50 + 50) + 'MW', Math.floor(Math.random() * 10 + 10) + 'Mvar']);
       }
       function refresh() {
-        const keys = ['cable3', 'cable6', 'cable1', 'cable2', 'cable4', 'cable5'];
+        const keys = ['cable3', 'cable6'];
         for (let i = 0; i < keys.length; i++) {
           if ((overloadIds.value as Array<string>).includes(keys[i])) continue;
           onOverload(keys[i]);

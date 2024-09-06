@@ -1,11 +1,11 @@
 <template>
   <div :class="prefixCls" class="login-background-img">
-    <AppLocalePicker class="absolute top-4 right-4 enter-x xl:text-gray-600" :showText="false"/>
+    <AppLocalePicker class="absolute top-4 right-4 enter-x xl:text-gray-600" :showText="false" />
     <AppDarkModeToggle class="absolute top-3 right-7 enter-x" />
     <div class="aui-logo" v-if="!getIsMobile">
       <div>
         <h3>
-          <img :src="logoImg" alt="jeecg" />
+          <!-- <img :src="logoImg" alt="jeecg" /> -->
         </h3>
       </div>
     </div>
@@ -18,7 +18,7 @@
           <div class="aui-form">
             <div class="aui-image">
               <div class="aui-image-text">
-                <img :src="adTextImg" />
+                <!-- <img :src="adTextImg" /> -->
               </div>
             </div>
             <div class="aui-formBox">
@@ -89,7 +89,8 @@
                 <div class="aui-formButton">
                   <div class="aui-flex">
                     <a-button :loading="loginLoading" class="aui-link-login" type="primary" @click="loginHandleClick">
-                      {{ t('sys.login.loginButton') }}</a-button>
+                      {{ t('sys.login.loginButton') }}</a-button
+                    >
                   </div>
                   <div class="aui-flex">
                     <a class="aui-linek-code aui-flex-box" @click="codeHandleClick">{{ t('sys.login.qrSignInFormTitle') }}</a>
@@ -143,8 +144,8 @@
       <MiniCodelogin ref="codeRef" @go-back="goBack" @success="handleSuccess" />
     </div>
     <!-- 第三方登录相关弹框 -->
-    <ThirdModal ref="thirdModalRef"></ThirdModal>
-    
+    <ThirdModal ref="thirdModalRef" />
+
     <!-- 图片验证码弹窗 -->
     <CaptchaModal @register="captchaRegisterModal" @ok="getLoginCode" />
   </div>
@@ -166,12 +167,12 @@
   import adTextImg from '/@/assets/loginmini/icon/jeecg_ad_text.png';
   import { AppLocalePicker, AppDarkModeToggle } from '/@/components/Application';
   import { useLocaleStore } from '/@/store/modules/locale';
-  import { useDesign } from "/@/hooks/web/useDesign";
-  import { useAppInject } from "/@/hooks/web/useAppInject";
+  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useAppInject } from '/@/hooks/web/useAppInject';
   import { GithubFilled, WechatFilled, DingtalkCircleFilled, createFromIconfontCN } from '@ant-design/icons-vue';
   import CaptchaModal from '@/components/jeecg/captcha/CaptchaModal.vue';
-  import { useModal } from "@/components/Modal";
-  import { ExceptionEnum } from "@/enums/exceptionEnum";
+  import { useModal } from '@/components/Modal';
+  import { ExceptionEnum } from '@/enums/exceptionEnum';
 
   const IconFont = createFromIconfontCN({
     scriptUrl: '//at.alicdn.com/t/font_2316098_umqusozousr.js',
@@ -343,8 +344,8 @@
       return;
     }
     //update-begin---author:wangshuai---date:2024-04-18---for:【QQYUN-9005】同一个IP，1分钟超过5次短信，则提示需要验证码---
-    const result = await getCaptcha({ mobile: phoneFormData.mobile, smsmode: SmsEnum.FORGET_PASSWORD }).catch((res) =>{
-      if(res.code === ExceptionEnum.PHONE_SMS_FAIL_CODE){
+    const result = await getCaptcha({ mobile: phoneFormData.mobile, smsmode: SmsEnum.FORGET_PASSWORD }).catch((res) => {
+      if (res.code === ExceptionEnum.PHONE_SMS_FAIL_CODE) {
         openCaptchaModal(true, {});
       }
     });
@@ -399,7 +400,7 @@
    */
   function handleSuccess(value) {
     Object.assign(formData, value);
-    Object.assign(phoneFormData, { mobile: "", smscode: "" });
+    Object.assign(phoneFormData, { mobile: '', smscode: '' });
     type.value = 'login';
     activeIndex.value = 'accountLogin';
     handleChangeCheckCode();
@@ -460,11 +461,11 @@
     color: #aaa !important;
   }
 
-  :deep(.jeecg-dark-switch){
-    position:absolute;
+  :deep(.jeecg-dark-switch) {
+    position: absolute;
     margin-right: 10px;
   }
-  .aui-link-login{
+  .aui-link-login {
     height: 42px;
     padding: 10px 15px;
     font-size: 14px;
@@ -474,100 +475,103 @@
     flex: 1;
     color: #fff;
   }
-  .aui-phone-logo{
+  .aui-phone-logo {
     position: absolute;
     margin-left: 10px;
     width: 60px;
-    top:2px;
+    top: 2px;
     z-index: 4;
   }
-  .top-3{
+  .top-3 {
     top: 0.45rem;
   }
 </style>
 
 <style lang="less">
-@prefix-cls: ~'@{namespace}-mini-login';
-@dark-bg: #293146;
+  @prefix-cls: ~'@{namespace}-mini-login';
+  @dark-bg: #293146;
 
-html[data-theme='dark'] {
-  .@{prefix-cls} {
-    background-color: @dark-bg !important;
-    background-image: none;
-
-    &::before {
-      background-image: url(/@/assets/svg/login-bg-dark.svg);
-    }
-    .aui-inputClear{
-      background-color: #232a3b !important;
-    }
-    .ant-input,
-    .ant-input-password {
-      background-color: #232a3b !important;
-    }
-
-    .ant-btn:not(.ant-btn-link):not(.ant-btn-primary) {
-      border: 1px solid #4a5569 !important;
-    }
-
-    &-form {
-      background: @dark-bg !important;
-    }
-
-    .app-iconify {
-      color: #fff !important;
-    }
-    .aui-inputClear input,.aui-input-line input,.aui-choice{
-      color: #c9d1d9 !important;
-    }
-
-    .aui-formBox{
+  html[data-theme='dark'] {
+    .@{prefix-cls} {
       background-color: @dark-bg !important;
-    }
-    .aui-third-text span{
-      background-color: @dark-bg !important;
-    }
-    .aui-form-nav .aui-flex-box{
-      color: #c9d1d9 !important;
-    }
+      background-image: none;
 
-    .aui-formButton .aui-linek-code{
-      background:  @dark-bg !important;
-      color: white !important;
-    }
-    .aui-code-line{
-      border-left: none !important;
-    }
-    .ant-checkbox-inner,.aui-success h3{
-      border-color: #c9d1d9;
-    }
-    //update-begin---author:wangshuai ---date:20230828  for：【QQYUN-6363】这个样式代码有问题，不在里面，导致表达式有问题------------
-    &-sign-in-way {
-      .anticon {
-        font-size: 22px !important;
-        color: #888 !important;
-        cursor: pointer !important;
+      &::before {
+        background-image: url(/@/assets/svg/login-bg-dark.svg);
+      }
+      .aui-inputClear {
+        background-color: #232a3b !important;
+      }
+      .ant-input,
+      .ant-input-password {
+        background-color: #232a3b !important;
+      }
 
-        &:hover {
-          color: @primary-color !important;
+      .ant-btn:not(.ant-btn-link):not(.ant-btn-primary) {
+        border: 1px solid #4a5569 !important;
+      }
+
+      &-form {
+        background: @dark-bg !important;
+      }
+
+      .app-iconify {
+        color: #fff !important;
+      }
+      .aui-inputClear input,
+      .aui-input-line input,
+      .aui-choice {
+        color: #c9d1d9 !important;
+      }
+
+      .aui-formBox {
+        background-color: @dark-bg !important;
+      }
+      .aui-third-text span {
+        background-color: @dark-bg !important;
+      }
+      .aui-form-nav .aui-flex-box {
+        color: #c9d1d9 !important;
+      }
+
+      .aui-formButton .aui-linek-code {
+        background: @dark-bg !important;
+        color: white !important;
+      }
+      .aui-code-line {
+        border-left: none !important;
+      }
+      .ant-checkbox-inner,
+      .aui-success h3 {
+        border-color: #c9d1d9;
+      }
+      //update-begin---author:wangshuai ---date:20230828  for：【QQYUN-6363】这个样式代码有问题，不在里面，导致表达式有问题------------
+      &-sign-in-way {
+        .anticon {
+          font-size: 22px !important;
+          color: #888 !important;
+          cursor: pointer !important;
+
+          &:hover {
+            color: @primary-color !important;
+          }
         }
       }
+      //update-end---author:wangshuai ---date:20230828  for：【QQYUN-6363】这个样式代码有问题，不在里面，导致表达式有问题------------
     }
-    //update-end---author:wangshuai ---date:20230828  for：【QQYUN-6363】这个样式代码有问题，不在里面，导致表达式有问题------------
-  }
 
-  input.fix-auto-fill,
-  .fix-auto-fill input {
-    -webkit-text-fill-color: #c9d1d9 !important;
-    box-shadow: inherit !important;
+    input.fix-auto-fill,
+    .fix-auto-fill input {
+      -webkit-text-fill-color: #c9d1d9 !important;
+      box-shadow: inherit !important;
+    }
+
+    .ant-divider-inner-text {
+      font-size: 12px !important;
+      color: @text-color-secondary !important;
+    }
+    .aui-third-login a {
+      background: transparent;
+    }
   }
-  
-  .ant-divider-inner-text {
-    font-size: 12px !important;
-    color: @text-color-secondary !important;
-  }
-  .aui-third-login a{
-    background: transparent;
-  }
-}
 </style>
