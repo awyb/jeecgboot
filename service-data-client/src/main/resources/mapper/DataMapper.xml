@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.whu.servicedataclient.project.mapper.DataMapper">
+    <insert id="insertAcLine" parameterType="com.whu.servicedataclient.project.entity.AcLineSegment">
+        insert into ocs_nn_aclinesegment(id, substationname) values
+        (#{id}, #{substationname})
+    </insert>
+</mapper>
+
