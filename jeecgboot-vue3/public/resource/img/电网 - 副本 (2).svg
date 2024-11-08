@@ -1,4 +1,4 @@
-<svg width="841.8900000000001" height="595.276" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="841.89" height="595.276" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <defs>
   <g id="svg_1">
    <g id="glyph-0-0">
@@ -288,18 +288,18 @@
   <text opacity="0" font-style="normal" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="8" id="svg_115" y="393.72565" x="608.41867" stroke-width="0" stroke="rgb(0%, 0%, 0%)" fill="#ff0000">过载</text>
   <text opacity="0" font-style="normal" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="8" id="svg_127" y="394.1802" x="677.87322" stroke-width="0" stroke="rgb(0%, 0%, 0%)" fill="#ff0000">过载</text>
   <text opacity="0" font-style="normal" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="8" id="svg_139" y="150.99837" x="420.05503" stroke-width="0" stroke="#000000" fill="#ff0000">过载</text>
-  <text fill="#000000" stroke-width="0" x="435.0412" y="186.02607" id="svg_185" font-size="5" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000"></text>
-  <text fill="#000000" stroke="#000000" stroke-width="0" x="693.09809" y="358.01284" id="svg_208" font-size="5" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve"></text>
-  <text fill="#000000" stroke="#000000" stroke-width="0" x="493.28914" y="283.91134" id="svg_209" font-size="5" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve"></text>
-  <text fill="#000000" stroke="#000000" stroke-width="0" x="432.20815" y="261.20867" id="svg_229" font-size="5" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve"></text>
-  <text fill="#000000" stroke="#000000" stroke-width="0" x="377.61363" y="236.34385" id="svg_230" font-size="5" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve"></text>
-  <text fill="#000000" stroke-width="0" x="470.53877" y="355.62814" id="svg_231" font-size="5" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000"></text>
-  <text fill="#000000" stroke-width="0" x="621.60373" y="357.98108" id="svg_251" font-size="5" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000"></text>
-  <text fill="#000000" stroke-width="0" x="519.13966" y="356.80461" id="svg_252" font-size="5" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000"></text>
-  <text fill="#000000" stroke-width="0" x="562.09667" y="356.8523" id="svg_253" font-size="5" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000"></text>
-  <text fill="#000000" stroke-width="0" x="248.96517" y="200.12768" id="svg_254" font-size="5" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000"></text>
-  <text fill="#000000" stroke-width="0" x="243.01923" y="341.74909" id="svg_257" font-size="5" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000"></text>
-  <text fill="#000000" stroke-width="0" x="404.10007" y="340.66801" id="svg_258" font-size="5" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000"></text>
-  <text fill="#000000" stroke-width="0" x="341.0636" y="353.70447" id="svg_259" font-size="5" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000"></text>
+  <text fill="#000000" stroke-width="0" x="444.10002" y="106.61431" id="svg_185" font-size="6" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000" font-weight="bold">1kV</text>
+  <text fill="#000000" stroke="#000000" stroke-width="0" x="695.45103" y="457.4246" id="svg_208" font-size="6" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" font-weight="bold">1kV</text>
+  <text fill="#000000" stroke="#000000" stroke-width="0" x="493.28914" y="283.91134" id="svg_209" font-size="6" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" font-weight="bold">1kV</text>
+  <text fill="#000000" stroke="#000000" stroke-width="0" x="432.20815" y="261.20867" id="svg_229" font-size="6" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" font-weight="bold">1kV</text>
+  <text fill="#000000" stroke="#000000" stroke-width="0" x="377.61363" y="236.34385" id="svg_230" font-size="6" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" font-weight="bold">1kV</text>
+  <text fill="#000000" stroke-width="0" x="471.12701" y="444.45166" id="svg_231" font-size="6" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000" font-weight="bold">1kV</text>
+  <text fill="#000000" stroke-width="0" x="625.72138" y="444.45166" id="svg_251" font-size="6" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000" font-weight="bold">1kV</text>
+  <text fill="#000000" stroke-width="0" x="520.31613" y="444.45166" id="svg_252" font-size="6" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000" font-weight="bold">1kV</text>
+  <text fill="#000000" stroke-width="0" x="566.80255" y="443.91112" id="svg_253" font-size="6" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000" font-weight="bold">1kV</text>
+  <text fill="#000000" stroke-width="0" x="248.96517" y="200.12768" id="svg_254" font-size="6" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000" font-weight="bold">220kV</text>
+  <text fill="#000000" stroke-width="0" x="243.01923" y="341.74909" id="svg_257" font-size="6" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000" font-weight="bold">10kV</text>
+  <text fill="#000000" stroke-width="0" x="404.10007" y="340.66801" id="svg_258" font-size="6" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000" font-weight="bold">110kV</text>
+  <text fill="#000000" stroke-width="0" x="345.18125" y="419.58682" id="svg_259" font-size="6" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve" stroke="#000000" font-weight="bold">10kV</text>
  </g>
 </svg>

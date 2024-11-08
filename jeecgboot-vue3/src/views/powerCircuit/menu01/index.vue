@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper style="background: #ffffff" :dense="true" :contentFullHeight="true" fixedHeight>
+  <PageWrapper style="" :dense="true" :contentFullHeight="true" fixedHeight>
     <template #headerContent>
       <label style="font-size: 20px; font-weight: 600"><Icon icon="ant-design:control-outlined" size="22" style="margin-right: 5px" />设备管理</label>
     </template>

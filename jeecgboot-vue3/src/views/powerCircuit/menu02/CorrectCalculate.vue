@@ -8,7 +8,7 @@
             <Icon
               v-if="overloadIds.includes(item.key + '') || removeKeys.includes(item.key + '')"
               :icon="`ant-design:${removeKeys.includes(item.key + '') ? 'check-circle' : 'warning'}-outlined`"
-              :style="{ color: removeKeys.includes(item.key + '') ? 'lime' : 'black' }"
+              :style="{ color: removeKeys.includes(item.key + '') ? 'lime' : '' }"
             />
           </span>
         </template>

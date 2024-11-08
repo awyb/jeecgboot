@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper style="background: #ffffff" :dense="true" :contentFullHeight="true" fixedHeight>
+  <PageWrapper style="" :dense="true" :contentFullHeight="true" fixedHeight>
     <template #headerContent>
       <label style="font-size: 20px; font-weight: 600">
         <Icon icon="ant-design:dashboard-filled" size="22" style="margin-right: 5px" />
@@ -10,7 +10,7 @@
       ></label>
     </template>
     <div style="width: 100%; height: 100%; display: flex; justify-content: space-around; padding: 10px">
-      <div style="height: inherit; width: 20%; box-shadow: 0px 0px 2px 2px #e4e4e4; display: flex; flex-direction: column">
+      <div style="height: inherit; width: 20%; box-shadow: 0px 0px 2px 2px #e4e4e4; display: flex; flex-direction: column" class="jeecg-tree">
         <BasicTree
           ref="tree"
           style="font-size: 16px; padding: 10px; flex: 1"
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div style="height: 100%; width: 78%; border: 2px solid; text-align: center; overflow: hidden">
-        <v3-drag-zoom-container ref="zoom" style="height: 100%; width: 100%">
+        <v3-drag-zoom-container ref="zoom" style="height: 100%; width: 100%; background: white">
           <div id="svgcontainer" class="wrap"></div>
         </v3-drag-zoom-container>
       </div>
@@ -332,7 +332,7 @@
           source.appendChild(createTspan(vals[0]));
           for (let i = 1; i < vals.length; i++) {
             const tspan = createTspan(vals[i]);
-            tspan.setAttribute('x', x + '');
+            tspan.setAttribute('x', Number(x) - 1 + '');
             tspan.setAttribute('dy', 6 * i + '');
             source.appendChild(tspan);
           }
@@ -361,9 +361,21 @@
         });
       }
       function calculation() {
-        appendText('svg_229', [Math.floor(Math.random() * 50 + 50) + 'MW', Math.floor(Math.random() * 10 + 10) + 'Mvar']);
-        appendText('svg_230', [Math.floor(Math.random() * 50 + 50) + 'MW', Math.floor(Math.random() * 10 + 10) + 'Mvar']);
-        appendText('svg_209', [Math.floor(Math.random() * 50 + 50) + 'MW', Math.floor(Math.random() * 10 + 10) + 'Mvar']);
+        appendText('svg_185', [(Math.random() * 50 + 50).toFixed(2) + ' MW', (-Math.random() * 10 - 20).toFixed(2) + ' Mvar']);
+        appendText('svg_259', [(Math.random() * 50 + 50).toFixed(2) + ' MW', (-Math.random() * 10 - 20).toFixed(2) + ' Mvar']);
+        appendText('svg_231', [(Math.random() * 50 + 50).toFixed(2) + ' MW', (-Math.random() * 10 - 20).toFixed(2) + ' Mvar']);
+        appendText('svg_252', [(Math.random() * 50 + 50).toFixed(2) + ' MW', (-Math.random() * 10 - 20).toFixed(2) + ' Mvar']);
+        appendText('svg_253', [(Math.random() * 50 + 50).toFixed(2) + ' MW', (-Math.random() * 10 - 20).toFixed(2) + ' Mvar']);
+        appendText('svg_251', [(Math.random() * 50 + 50).toFixed(2) + ' MW', (-Math.random() * 10 - 20).toFixed(2) + ' Mvar']);
+        appendText('svg_208', [(Math.random() * 50 + 50).toFixed(2) + ' MW', (-Math.random() * 10 - 20).toFixed(2) + ' Mvar']);
+
+        appendText('svg_229', [(Math.random() * 50 + 50).toFixed(2) + ' MW', (-Math.random() * 10 - 20).toFixed(2) + ' Mvar']);
+        appendText('svg_230', [(Math.random() * 50 + 50).toFixed(2) + ' MW', (-Math.random() * 10 - 20).toFixed(2) + ' Mvar']);
+        appendText('svg_209', [(Math.random() * 50 + 50).toFixed(2) + ' MW', (-Math.random() * 10 - 20).toFixed(2) + ' Mvar']);
+
+        appendText('svg_254', [(Math.random() * 3 + 1).toFixed(2) + ' p.u.', (-Math.random() * 3 + 1).toFixed(2) + ' deg.']);
+        appendText('svg_257', [(Math.random() * 3 + 1).toFixed(2) + ' p.u.', (-Math.random() * 3 + 1).toFixed(2) + ' deg.']);
+        appendText('svg_258', [(Math.random() * 3 + 1).toFixed(2) + ' p.u.', (-Math.random() * 3 + 1).toFixed(2) + ' deg.']);
       }
       function refresh() {
         const keys = ['cable3', 'cable6'];
@@ -374,7 +386,7 @@
             message: '线路过载',
             description: h('label', null, [
               h('span', null, '线路'),
-              h('span', { style: { 'font-weight': 'bold', color: '#000022' } }, getNodeByKey(keys[i])?.title),
+              h('span', { style: { 'font-family': 'cursive' } }, getNodeByKey(keys[i])?.title),
               h('span', null, '超限'),
             ]),
             // description: `线路<i>${getNodeByKey(keys[i])?.title}</i>超限`,
@@ -388,7 +400,7 @@
           message: '切除成功',
           description: h('label', null, [
             h('span', null, '设备'),
-            h('span', { style: { 'font-weight': 'bold', color: '#000022' } }, info.title),
+            h('span', { style: { 'font-family': 'cursive' } }, info.title),
             h('span', null, '切除负荷量：20MW'),
           ]),
           // description: `设备${info.title}切除负荷量：20MW`,
@@ -421,7 +433,7 @@
 </script>
 <style scoped>
   .jeecg-page-wrapper {
-    background: #fff;
+    /* background: #fff; */
   }
   .wrap {
     scale: 1.7;

@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper style="background: #ffffff" :dense="true" :contentFullHeight="true" fixedHeight>
+  <PageWrapper style="" :dense="true" :contentFullHeight="true" fixedHeight>
     <template #headerContent>
       <label style="font-size: 20px; font-weight: 600; display: flex; align-items: center; height: 30px">
         <Icon icon="ant-design:line-chart-outlined" size="24" style="margin-right: 5px" />
@@ -15,7 +15,7 @@
       </label>
       <p style="color: #00000099; margin-left: 30px">预测负荷：科五线</p>
     </template>
-    <div style="width: 100%; height: 100%; display: flex; justify-content: space-around; padding: 10px; background: #ffffff">
+    <div style="width: 100%; height: 100%; display: flex; justify-content: space-around; padding: 10px">
       <div style="height: 100%; width: 98%; text-align: center; overflow: hidden; box-shadow: 0px 0px 1px 1px #f0f0f0">
         <LinePredict ref="lineChart" />
       </div>
