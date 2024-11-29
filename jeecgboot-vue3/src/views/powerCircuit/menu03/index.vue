@@ -27,13 +27,14 @@
   import { PageWrapper } from '/@/components/Page';
   import { onMounted, ref, onBeforeMount } from 'vue';
   import { defHttp } from '/@/utils/http/axios';
+  // import axios from 'axios';
+
   const lineChart = ref(null);
   const state = ref(true);
 
   let inData: any[] = [];
-  let i = 0;
   let checked = { title: '科五线', type: 'cable' };
-  let timer;
+
   const predictLoad = async () => {
     if (!lineChart.value) return;
     const actualLoad = await defHttp.get({
@@ -44,9 +45,21 @@
       url: '/online/cgreport/api/getColumnsAndData/1831575913648021505',
       params: { pageSize: 30 },
     });
+    // const ga = await axios({
+    //   url: '/kafka/test',
+    //   data: { substationname: '科五线' },
+    //   headers: { 'Access-Control-Allow-Origin': '*' },
+    //   method: 'post',
+    // });
+    // const getDatas = await defHttp.post({
+    //   url: '/kafka/test',
+    //   params: { substationname: '科五线' },
+    // });
+
     (lineChart.value as any)?.initChart([], '预测负荷：' + checked.title);
-    i = 0;
     inData.length = 0;
+    // let i = 0;
+    // let timer;
     // let timer = setInterval(() => {
     //   if (i > 23 || !lineChart.value) return clearInterval(timer);
     //   inData.push({
